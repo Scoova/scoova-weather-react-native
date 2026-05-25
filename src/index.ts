@@ -5,7 +5,7 @@
  * no native modules, no `pod install`, just `fetch`. Works on iOS,
  * Android, and React Native Web.
  *
- * Speaks the open-meteo `/v1/forecast` shape. All requests go through
+ * Speaks the scoova weather `/v1/forecast` shape. All requests go through
  * the central Scoova gateway at `https://api.scoo-va.info/api/v1/weather`;
  * pass `apiKey` for key-enforced calls.
  */
@@ -207,7 +207,7 @@ export class WeatherClient {
 }
 
 /**
- * Map an open-meteo WMO weather code to a coarse-grained label / icon hint.
+ * Map an scoova weather WMO weather code to a coarse-grained label / icon hint.
  */
 export type WeatherCondition = 'clear' | 'cloudy' | 'fog' | 'drizzle' | 'rain' | 'snow' | 'thunderstorm' | 'unknown';
 
