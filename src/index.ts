@@ -5,9 +5,8 @@
  * no native modules, no `pod install`, just `fetch`. Works on iOS,
  * Android, and React Native Web.
  *
- * Speaks the open-meteo `/v1/forecast` shape. Point `baseUrl` at the
- * raw weather subdomain (`https://weather.scoo-va.info`) for un-keyed
- * calls, or at the gateway (`https://api.scoo-va.info/v1/weather`) and
+ * Speaks the open-meteo `/v1/forecast` shape. All requests go through
+ * the central Scoova gateway at `https://api.scoo-va.info/api/v1/weather`;
  * pass `apiKey` for key-enforced calls.
  */
 
@@ -101,7 +100,7 @@ export class WeatherError extends Error {
   }
 }
 
-const DEFAULT_BASE = 'https://weather.scoo-va.info';
+const DEFAULT_BASE = 'https://api.scoo-va.info/api/v1/weather';
 
 const DEFAULT_CURRENT: WeatherVar[] = [
   'temperature_2m', 'relative_humidity_2m', 'apparent_temperature',
@@ -118,9 +117,9 @@ const DEFAULT_DAILY: WeatherVar[] = [
 
 export interface WeatherClientOptions {
   /**
-   * Base URL. Defaults to the raw weather subdomain
-   * (`https://weather.scoo-va.info`). Point this at the gateway —
-   * `https://api.scoo-va.info/v1/weather` — when you want key enforcement.
+   * Base URL. Defaults to the central Scoova gateway
+   * (`https://api.scoo-va.info/api/v1/weather`). Override only if you are
+   * pointing at a self-hosted weather endpoint.
    */
   baseUrl?: string;
   /**
